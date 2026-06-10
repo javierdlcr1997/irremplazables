@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Irremplazables – Curso de Soft Skills</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Merriweather+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #162343; --slate: #3E4D6C;
+    --white: #ffffff; --red: #F55C55; --red-dark: #d94840;
+    --text-light: rgba(255,255,255,0.72);
+    --font-serif: 'Merriweather', Georgia, serif;
+    --font-sans: 'Merriweather Sans', sans-serif;
+    --max: 1100px; --pad: 2rem;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-sans); background: var(--navy); color: var(--white); overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem var(--pad); background: rgba(22,35,67,0.93); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .nav-logo { font-family: var(--font-serif); font-weight: 900; font-size: 1.15rem; letter-spacing: 0.04em; color: #ffffff; text-decoration: none; }
+  .nav-cta { background: var(--red); color: var(--white); font-family: var(--font-sans); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.55rem 1.3rem; border-radius: 4px; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--red-dark); }
+
+  .section-wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+  .btn-primary { display: inline-block; background: var(--red); color: var(--white); font-family: var(--font-sans); font-weight: 700; font-size: 0.9rem; padding: 1rem 2.2rem; border-radius: 4px; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+  .btn-ghost { display: inline-block; background: transparent; color: var(--white); font-family: var(--font-sans); font-weight: 600; font-size: 0.9rem; padding: 1rem 2.2rem; border-radius: 4px; border: 1.5px solid rgba(255,255,255,0.28); text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+  .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
+  .btn-full { display: block; text-align: center; }
+
+  .label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; display: block; }
+  .h2 { font-family: var(--font-serif); font-size: clamp(1.9rem, 3.5vw, 2.9rem); font-weight: 900; line-height: 1.18; margin-bottom: 1.2rem; }
+
+  .hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 8rem var(--pad) 5rem; position: relative; overflow: hidden; text-align: center; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 55% at 50% 45%, rgba(62,77,108,0.6) 0%, transparent 70%), radial-gradient(ellipse 30% 30% at 15% 85%, rgba(245,92,85,0.1) 0%, transparent 60%); pointer-events: none; }
+  .hero-inner { max-width: 760px; position: relative; }
+  .hero-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 1.4rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+  .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 28px; height: 2px; background: var(--red); }
+  .hero h1 { font-family: var(--font-serif); font-size: clamp(2.4rem, 5.5vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; }
+  .hero h1 em { font-style: italic; color: var(--red); display: block; }
+  .hero-deck { font-size: 1.05rem; line-height: 1.8; color: var(--text-light); font-weight: 300; margin-bottom: 2.4rem; }
+  .hero-btns { display: flex; flex-wrap: wrap; gap: 0.85rem; justify-content: center; }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-top: 2.5rem; }
+  .pill { background: rgba(62,77,108,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 999px; padding: 0.4rem 1rem; font-size: 0.8rem; color: var(--text-light); }
+
+  .why { background: var(--slate); padding: 6rem 0; }
+  .why-intro-text { font-size: 1rem; line-height: 1.82; color: var(--text-light); font-weight: 300; margin-bottom: 2.5rem; }
+  .why-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin-bottom: 2rem; }
+  @media (max-width: 900px) { .why-blocks { grid-template-columns: 1fr; } }
+  .why-block { background: rgba(22,35,67,0.45); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.5rem; }
+  .why-block-q { font-family: var(--font-serif); font-size: 0.88rem; font-style: italic; color: var(--red); margin-bottom: 0.55rem; }
+  .why-block p { font-size: 0.83rem; line-height: 1.7; color: var(--text-light); font-weight: 300; }
+  .why-quote { font-family: var(--font-serif); font-size: 0.95rem; font-style: italic; line-height: 1.65; color: var(--white); font-weight: 300; padding-left: 1.2rem; border-left: 3px solid var(--red); margin-top: 0.5rem; }
+
+  .course { background: var(--navy); padding: 6rem 0; }
+  .course-modules { list-style: none; margin-top: 1.5rem; }
+  .course-modules li { display: flex; align-items: flex-start; gap: 1.1rem; padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .course-modules li:last-child { border-bottom: none; }
+  .module-num { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 900; color: rgba(245,92,85,0.25); line-height: 1; min-width: 2.2rem; }
+  .module-info strong { display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .module-info span { font-size: 0.83rem; color: var(--text-light); font-weight: 300; line-height: 1.5; }
+  .course-right-card { background: rgba(62,77,108,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2.5rem; }
+  .for-who-list { list-style: none; margin-top: 1.2rem; }
+  .for-who-list li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.65rem 0; font-size: 0.9rem; color: var(--text-light); line-height: 1.55; }
+  .for-who-list li::before { content: '→'; color: var(--red); font-weight: 700; flex-shrink: 0; }
+  .cta-block { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+  .cta-block p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1.1rem; font-weight: 300; line-height: 1.6; }
+
+  .testimonials { padding: 6rem 0; background: var(--slate); }
+  .testimonials-header { text-align: center; margin-bottom: 3.5rem; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .t-card { background: rgba(22,35,67,0.5); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 2rem; }
+  .t-stars { color: var(--red); font-size: 0.82rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+  .t-text { font-family: var(--font-serif); font-size: 0.93rem; font-style: italic; line-height: 1.78; color: var(--white); margin-bottom: 1.5rem; font-weight: 300; }
+  .t-author strong { display: block; font-size: 0.88rem; font-weight: 700; }
+  .t-author span { font-size: 0.76rem; color: var(--text-light); }
+
+  .final { padding: 7rem var(--pad); background: var(--navy); text-align: center; position: relative; overflow: hidden; }
+  .final::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 55% at 50% 50%, rgba(245,92,85,0.08) 0%, transparent 70%); }
+  .final-inner { max-width: 600px; margin: 0 auto; position: relative; }
+  .final h2 { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.15; margin-bottom: 1.2rem; }
+  .final h2 em { font-style: italic; color: var(--red); }
+  .final p { font-size: 1rem; color: var(--text-light); line-height: 1.78; margin-bottom: 2.5rem; font-weight: 300; }
+  .final-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+  footer { background: rgba(0,0,0,0.25); padding: 1.5rem var(--pad); text-align: center; font-size: 0.76rem; color: var(--text-light); border-top: 1px solid rgba(255,255,255,0.06); }
+
+  .fade { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade.in { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    .hero { padding: 7rem 1.5rem 4rem; min-height: auto; }
+    .why, .course, .testimonials { padding: 4rem 0; }
+    .final { padding: 4.5rem 1.5rem; }
+    .final-btns { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Irremplazables</a>
+  <a href="https://wa.me/34610022669?text=Hola,%20quiero%20reservar%20mi%20plaza%20en%20el%20curso%20Irremplazables" target="_blank" class="nav-cta">Reservar plaza</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow fade">Curso de Soft Skills</p>
+    <h1 class="fade">
+      Las habilidades que
+      <em>nadie te enseñó</em>
+    </h1>
+    <p class="hero-deck fade">Las destrezas que marcan la diferencia nunca estuvieron en ningún plan de estudios. Comunicación, liderazgo, delegación, autoridad. Lo que convierte a un buen profesional en alguien <strong>irremplazable</strong>.</p>
+    <div class="hero-btns fade">
+      <a href="https://wa.me/34610022669?text=Hola,%20quiero%20reservar%20mi%20plaza%20en%20el%20curso%20Irremplazables" target="_blank" class="btn-primary">Reserva tu plaza →</a>
+      <a href="#curso" class="btn-ghost">Ver el programa</a>
+    </div>
+    <div class="hero-pills fade">
+      <span class="pill">Claridad y objetivos</span>
+      <span class="pill">Comunicación efectiva</span>
+      <span class="pill">Delegación</span>
+      <span class="pill">Autoridad</span>
+      <span class="pill">Liderazgo</span>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="section-wrap">
+    <div style="max-width:640px; margin:0 auto 3.5rem; text-align:center;" class="fade">
+      <span class="label">Por qué existe este curso</span>
+      <h2 class="h2">Nadie nos preparó<br>para esto</h2>
+      <p class="why-intro-text">Desde hace años veo a muchas personas que sufren. Lo digo sin tapujos: sufren. Porque tienen dificultades en cuestiones cotidianas para las que nadie les preparó. Ni el colegio, ni el instituto, ni la universidad.</p>
+    </div>
+    <div class="why-blocks" style="max-width:var(--max); margin:0 auto;">
+      <div class="why-block fade">
+        <p class="why-block-q">¿Nos enseñaron a saber qué queremos?</p>
+        <p>De esa falta de claridad nacen objetivos sin conexión con lo que buscamos y personas desbordadas.</p>
+      </div>
+      <div class="why-block fade">
+        <p class="why-block-q">¿Nos enseñaron a comunicarnos?</p>
+        <p>Pocas veces aprendemos a escuchar de verdad y conducir una conversación a un punto común.</p>
+      </div>
+      <div class="why-block fade">
+        <p class="why-block-q">¿Nos enseñaron a delegar?</p>
+        <p>El micromanagement está a la orden del día porque nadie enseñó que delegar es un proceso que merece la pena.</p>
+      </div>
+      <div class="why-block fade">
+        <p class="why-block-q">¿El cargo da autoridad?</p>
+        <p>La autoridad se construye día a día, con decisiones coherentes y generando confianza en quienes te rodean.</p>
+      </div>
+    </div>
+    <blockquote class="why-quote fade" style="max-width:640px; margin:2.5rem auto 0;">"Todo esto acaba en relaciones que se rompen, familias que se desgastan o empresas con rotación constante. Y no debería ser así."</blockquote>
+  </div>
+</section>
+
+<section class="course" id="curso">
+  <div class="section-wrap">
+    <div class="two-col">
+      <div>
+        <span class="label fade">El programa</span>
+        <h2 class="h2 fade">Lo que vamos<br>a trabajar</h2>
+        <ul class="course-modules">
+          <li class="fade"><span class="module-num">01</span><div class="module-info"><strong>Claridad y objetivos</strong><span>Saber en qué situación estás, qué quieres de verdad y cómo definir el camino para conseguirlo.</span></div></li>
+          <li class="fade"><span class="module-num">02</span><div class="module-info"><strong>Comunicación efectiva</strong><span>Escuchar, conectar y conducir conversaciones hacia acuerdos. Porque para que te escuchen, primero tienes que escuchar.</span></div></li>
+          <li class="fade"><span class="module-num">03</span><div class="module-info"><strong>Delegación sin miedo</strong><span>Soltar el control de forma inteligente y construir un entorno donde las personas crezcan.</span></div></li>
+          <li class="fade"><span class="module-num">04</span><div class="module-info"><strong>Autoridad y credibilidad</strong><span>Construir influencia real basada en decisiones coherentes y en generar confianza.</span></div></li>
+          <li class="fade"><span class="module-num">05</span><div class="module-info"><strong>Liderazgo de personas</strong><span>Orientar hacia un objetivo común preocupándote de verdad por quienes forman parte del proyecto.</span></div></li>
+        </ul>
+      </div>
+      <div class="fade">
+        <div class="course-right-card">
+          <span class="label">¿Para quién es?</span>
+          <h3 style="font-family:var(--font-serif);font-size:1.25rem;font-weight:900;margin-bottom:0.25rem;">Este curso es para ti si…</h3>
+          <ul class="for-who-list">
+            <li>Quieres mejorar tu impacto en el entorno laboral y personal</li>
+            <li>Gestionas personas y necesitas herramientas reales</li>
+            <li>Sientes que te faltan recursos para situaciones del día a día</li>
+            <li>Llevas años siendo bueno en lo tuyo, pero algo no encaja del todo</li>
+            <li>Quieres ser indispensable para quienes te rodean</li>
+          </ul>
+          <div class="cta-block">
+            <p>Las plazas son limitadas para garantizar atención cercana y aprendizaje real.</p>
+            <a href="https://wa.me/34610022669?text=Hola,%20quiero%20saber%20más%20sobre%20el%20curso%20Irremplazables" target="_blank" class="btn-primary btn-full">Contacta para saber más →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="section-wrap">
+    <div class="testimonials-header fade">
+      <span class="label">Testimonios</span>
+      <h2 class="h2">Lo que dicen quienes<br>ya lo vivieron</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="t-card fade">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Por fin alguien que habla de lo que de verdad importa en el trabajo. No teoría, sino herramientas que se pueden aplicar desde el primer día."</p>
+        <div class="t-author"><strong>María G.</strong><span>Directora de operaciones</span></div>
+      </div>
+      <div class="t-card fade">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Llevo 10 años gestionando equipos y nadie me había explicado la delegación de esta manera. Me cambió la forma de trabajar con mi equipo."</p>
+        <div class="t-author"><strong>Carlos M.</strong><span>Responsable de equipo comercial</span></div>
+      </div>
+      <div class="t-card fade">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Lo que más valoro es la honestidad del enfoque. No te venden que todo es fácil. Te dan lo que necesitas para mejorar de verdad."</p>
+        <div class="t-author"><strong>Ana R.</strong><span>Project Manager</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="final-inner">
+    <h2 class="fade">Conviértete en <em>irremplazable</em></h2>
+    <p class="fade">Las plazas son limitadas. Si quieres trabajar estas destrezas y llevarlas a tu vida profesional y personal, escríbenos y te contamos todo.</p>
+    <div class="final-btns fade">
+      <a href="https://wa.me/34610022669?text=Hola,%20quiero%20reservar%20mi%20plaza%20en%20el%20curso%20Irremplazables" target="_blank" class="btn-primary">Reserva tu plaza →</a>
+      <a href="https://wa.me/34610022669?text=Hola,%20quiero%20saber%20más%20sobre%20el%20curso%20Irremplazables" target="_blank" class="btn-ghost">Contacta para saber más</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Irremplazables · Curso de Soft Skills</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), { threshold: 0.1 });
+  document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
