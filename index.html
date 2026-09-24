@@ -36,8 +36,8 @@
   .label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; display: block; }
   .h2 { font-family: var(--font-serif); font-size: clamp(1.9rem, 3.5vw, 2.9rem); font-weight: 900; line-height: 1.18; margin-bottom: 1.2rem; }
 
-  .hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 8rem var(--pad) 5rem; position: relative; overflow: hidden; text-align: center; }
-  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 55% at 50% 45%, rgba(62,77,108,0.6) 0%, transparent 70%), radial-gradient(ellipse 30% 30% at 15% 85%, rgba(245,92,85,0.1) 0%, transparent 60%); pointer-events: none; }
+  .hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 8rem var(--pad) 5rem; position: relative; overflow: hidden; text-align: center; background: var(--navy); }
+  .hero::before { content: ''; position: absolute; inset: 0; background: none; pointer-events: none; }
   .hero-inner { max-width: 760px; position: relative; }
   .hero-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 1.4rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
   .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 28px; height: 2px; background: var(--red); }
@@ -88,7 +88,7 @@
   .final p { font-size: 1rem; color: var(--text-light); line-height: 1.78; margin-bottom: 2.5rem; font-weight: 300; }
   .final-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 
-  footer { background: rgba(0,0,0,0.25); padding: 1.5rem var(--pad); text-align: center; font-size: 0.76rem; color: var(--text-light); border-top: 1px solid rgba(255,255,255,0.06); }
+  footer { background: var(--navy); padding: 1.5rem var(--pad); text-align: center; font-size: 0.76rem; color: var(--text-light); border-top: 1px solid rgba(255,255,255,0.06); }
 
   .fade { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
   .fade.in { opacity: 1; transform: none; }
@@ -203,18 +203,13 @@
     <div class="testimonials-grid">
       <div class="t-card fade">
         <div class="t-stars">★★★★★</div>
-        <p class="t-text">"Por fin alguien que habla de lo que de verdad importa en el trabajo. No teoría, sino herramientas que se pueden aplicar desde el primer día."</p>
-        <div class="t-author"><strong>María G.</strong><span>Directora de operaciones</span></div>
+        <p class="t-text">"El curso me ayudó a enfrentar de una mejor forma las conversaciones, laborales y personales más difíciles, sin sobrepensar el resultado, ganando seguridad en mi mismo y mejorando la forma en que transmito mi mensaje. Creo que el curso puede ayudar a mucha gente en el ámbito laboral. Tanto aquella que está empezando una carrera, como aquella que debe empezar a compaginar una mayor responsabilidad laboral con una responsabilidad familiar."</p>
+        <div class="t-author"><strong>Jaime Pardo</strong></div>
       </div>
       <div class="t-card fade">
         <div class="t-stars">★★★★★</div>
-        <p class="t-text">"Llevo 10 años gestionando equipos y nadie me había explicado la delegación de esta manera. Me cambió la forma de trabajar con mi equipo."</p>
-        <div class="t-author"><strong>Carlos M.</strong><span>Responsable de equipo comercial</span></div>
-      </div>
-      <div class="t-card fade">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-text">"Lo que más valoro es la honestidad del enfoque. No te venden que todo es fácil. Te dan lo que necesitas para mejorar de verdad."</p>
-        <div class="t-author"><strong>Ana R.</strong><span>Project Manager</span></div>
+        <p class="t-text">"El curso me ha parecido extraordinario. Pese a dar clase de comunicación a peritos, me ha dado otra visión diferente, que voy a aprovechar para mis clases."</p>
+        <div class="t-author"><strong>María Jesús Rodríguez</strong></div>
       </div>
     </div>
   </div>
