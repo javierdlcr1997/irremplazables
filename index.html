@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Irremplazables – Curso de Soft Skills</title>
+<meta name="description" content="Liderazgo, comunicación y delegación para quienes dirigen personas. 7 sesiones online en directo, grupo de máximo 10 y corrección personal. Próxima edición: lunes 11 de enero de 2027.">
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Merriweather+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -17,15 +18,33 @@
   }
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-sans); background: var(--navy); color: var(--white); overflow-x: hidden; }
+  a { color: inherit; }
 
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem var(--pad); background: rgba(22,35,67,0.93); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.07); }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem var(--pad); background: rgba(22,35,67,0.93); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.07); }
   .nav-logo { font-family: var(--font-serif); font-weight: 900; font-size: 1.15rem; letter-spacing: 0.04em; color: #ffffff; text-decoration: none; }
-  .nav-cta { background: var(--red); color: var(--white); font-family: var(--font-sans); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.55rem 1.3rem; border-radius: 4px; text-decoration: none; transition: background 0.2s; }
+  .nav-right { display: flex; align-items: center; gap: 1.1rem; }
+  .nav-links { display: flex; align-items: center; gap: 1.1rem; }
+  .nav-link { font-size: 0.78rem; font-weight: 600; color: var(--white); text-decoration: none; opacity: 0.85; white-space: nowrap; }
+  .nav-link:hover, .nav-link.current { opacity: 1; color: var(--red); }
+  .nav-cta { background: var(--red); color: var(--white); font-family: var(--font-sans); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.55rem 1.3rem; border-radius: 4px; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
   .nav-cta:hover { background: var(--red-dark); }
+  .nav-toggle { display: none; background: none; border: 1.5px solid rgba(255,255,255,0.3); border-radius: 4px; color: var(--white); width: 40px; height: 36px; font-size: 1.2rem; cursor: pointer; }
+  @media (max-width: 1080px) {
+    .nav-toggle { display: block; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: rgba(22,35,67,0.98); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0.5rem 0; }
+    .nav-links.open { display: flex; }
+    .nav-link { font-size: 0.95rem; padding: 0.85rem var(--pad); }
+  }
+  @media (max-width: 420px) { .nav-cta { padding: 0.5rem 0.8rem; font-size: 0.72rem; } }
+  section[id] { scroll-margin-top: 70px; }
 
   .section-wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
   @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; gap: 2.5rem; } }
+  .bg-navy { background: var(--navy); }
+  .bg-slate { background: var(--slate); }
+  .center-head { max-width: 680px; margin: 0 auto 3rem; text-align: center; }
+  .lead { font-size: 1rem; line-height: 1.82; color: var(--text-light); font-weight: 300; }
 
   .btn-primary { display: inline-block; background: var(--red); color: var(--white); font-family: var(--font-sans); font-weight: 700; font-size: 0.9rem; padding: 1rem 2.2rem; border-radius: 4px; text-decoration: none; transition: background 0.2s, transform 0.15s; }
   .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
@@ -36,66 +55,144 @@
   .label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; display: block; }
   .h2 { font-family: var(--font-serif); font-size: clamp(1.9rem, 3.5vw, 2.9rem); font-weight: 900; line-height: 1.18; margin-bottom: 1.2rem; }
 
+  /* Hero */
   .hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 8rem var(--pad) 5rem; position: relative; overflow: hidden; text-align: center; background: var(--navy); }
-  .hero::before { content: ''; position: absolute; inset: 0; background: none; pointer-events: none; }
-  .hero-inner { max-width: 760px; position: relative; }
+  .hero-inner { max-width: 780px; position: relative; }
   .hero-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 1.4rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
   .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 28px; height: 2px; background: var(--red); }
   .hero h1 { font-family: var(--font-serif); font-size: clamp(2.4rem, 5.5vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; }
   .hero h1 em { font-style: italic; color: var(--red); display: block; }
+  .hero-claim { font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 1.1rem; }
   .hero-deck { font-size: 1.05rem; line-height: 1.8; color: var(--text-light); font-weight: 300; margin-bottom: 2.4rem; }
   .hero-btns { display: flex; flex-wrap: wrap; gap: 0.85rem; justify-content: center; }
+  .hero-note { margin-top: 1.2rem; font-size: 0.85rem; color: var(--text-light); }
+  .hero-note strong { color: var(--white); }
   .hero-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-top: 2.5rem; }
   .pill { background: rgba(62,77,108,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 999px; padding: 0.4rem 1rem; font-size: 0.8rem; color: var(--text-light); }
 
-  .why { background: var(--slate); padding: 6rem 0; }
-  .why-intro-text { font-size: 1rem; line-height: 1.82; color: var(--text-light); font-weight: 300; margin-bottom: 2.5rem; }
+  /* Próxima edición */
+  .edition { padding: 4.5rem 0; }
+  .edition-card { display: grid; grid-template-columns: 1.15fr 1fr; gap: 3rem; align-items: center; background: rgba(22,35,67,0.45); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2.8rem; }
+  .edition-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); display: block; margin-bottom: 0.6rem; }
+  .edition-sub { font-size: 1rem; line-height: 1.7; color: var(--text-light); margin: 0.4rem 0 1.8rem; }
+  .edition-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem 2rem; }
+  .fact small { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 0.35rem; }
+  .fact span { font-size: 0.95rem; line-height: 1.5; }
+  .edition-link { display: inline-block; margin-top: 1.8rem; font-size: 0.9rem; color: var(--white); }
+  .edition-link strong { text-decoration: underline; text-underline-offset: 3px; }
+  .edition-foot { grid-column: 1 / -1; font-size: 0.75rem; color: var(--text-light); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-top: -0.5rem; }
+  @media (max-width: 860px) { .edition-card { grid-template-columns: 1fr; padding: 2rem; gap: 2rem; } .edition-foot { margin-top: 0; } }
+  @media (max-width: 480px) { .edition-facts { grid-template-columns: 1fr; } }
+
+  /* Por qué */
+  .why { padding: 6rem 0; }
   .why-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin-bottom: 2rem; }
   @media (max-width: 900px) { .why-blocks { grid-template-columns: 1fr; } }
-  .why-block { background: rgba(22,35,67,0.45); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.5rem; }
+  .why-block { background: rgba(62,77,108,0.35); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.5rem; }
   .why-block-q { font-family: var(--font-serif); font-size: 0.88rem; font-style: italic; color: var(--red); margin-bottom: 0.55rem; }
   .why-block p { font-size: 0.83rem; line-height: 1.7; color: var(--text-light); font-weight: 300; }
   .why-quote { font-family: var(--font-serif); font-size: 0.95rem; font-style: italic; line-height: 1.65; color: var(--white); font-weight: 300; padding-left: 1.2rem; border-left: 3px solid var(--red); margin-top: 0.5rem; }
 
-  .course { background: var(--navy); padding: 6rem 0; }
+  /* Programa */
+  .course { padding: 6rem 0; }
+  .course-grid { max-width: 760px; margin: 0 auto; }
+  @media (max-width: 900px) { .course-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
   .course-modules { list-style: none; margin-top: 1.5rem; }
-  .course-modules li { display: flex; align-items: flex-start; gap: 1.1rem; padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .course-modules li { display: flex; align-items: flex-start; gap: 1.1rem; padding: 1.1rem 0; border-bottom: 1px solid rgba(255,255,255,0.09); }
   .course-modules li:last-child { border-bottom: none; }
-  .module-num { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 900; color: rgba(245,92,85,0.25); line-height: 1; min-width: 2.2rem; }
+  .module-num { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 900; color: rgba(245,92,85,0.55); line-height: 1; min-width: 2.2rem; }
   .module-info strong { display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
   .module-info span { font-size: 0.83rem; color: var(--text-light); font-weight: 300; line-height: 1.5; }
-  .course-right-card { background: rgba(62,77,108,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2.5rem; }
+  .course-right-card { background: rgba(22,35,67,0.45); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2.5rem; }
   .for-who-list { list-style: none; margin-top: 1.2rem; }
   .for-who-list li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.65rem 0; font-size: 0.9rem; color: var(--text-light); line-height: 1.55; }
   .for-who-list li::before { content: '→'; color: var(--red); font-weight: 700; flex-shrink: 0; }
   .cta-block { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
   .cta-block p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1.1rem; font-weight: 300; line-height: 1.6; }
+  .how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 3.5rem; }
+  @media (max-width: 900px) { .how { grid-template-columns: 1fr; } }
+  .how-item { background: rgba(22,35,67,0.45); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.6rem; }
+  .how-item strong { display: block; font-family: var(--font-serif); font-size: 1rem; margin-bottom: 0.5rem; }
+  .how-item p { font-size: 0.85rem; line-height: 1.65; color: var(--text-light); font-weight: 300; }
 
-  .testimonials { padding: 6rem 0; background: var(--slate); }
+  /* Sobre Javier */
+  .about { padding: 6rem 0; }
+  .about-grid { display: grid; grid-template-columns: 220px 1fr; gap: 3rem; align-items: center; max-width: 900px; margin: 0 auto; }
+  .about-photo { width: 220px; height: 220px; border-radius: 50%; background: var(--slate); border: 3px solid var(--red); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 3.4rem; font-weight: 900; color: var(--white); overflow: hidden; }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about p { font-size: 1rem; line-height: 1.82; color: var(--text-light); font-weight: 300; margin-bottom: 1rem; }
+  @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; text-align: center; } .about-photo { margin: 0 auto; width: 170px; height: 170px; } }
+
+  /* Testimonios */
+  .testimonials { padding: 6rem 0; }
   .testimonials-header { text-align: center; margin-bottom: 3.5rem; }
-  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-  .t-card { background: rgba(22,35,67,0.5); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 2rem; }
+  .testimonials-grid { --per-view: 3; --gap: 1.5rem; display: flex; gap: var(--gap); overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .testimonials-grid::-webkit-scrollbar { display: none; }
+  .t-card { flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view)); scroll-snap-align: start; background: rgba(22,35,67,0.5); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 2rem; }
+  .t-dots { display: flex; justify-content: center; gap: 0.6rem; margin-top: 2rem; }
+  .t-dots[hidden] { display: none; }
+  .t-dot { width: 10px; height: 10px; border-radius: 50%; border: none; padding: 0; background: #A9BCDD; cursor: pointer; transition: background 0.2s, transform 0.2s; }
+  .t-dot.active { background: var(--red); transform: scale(1.25); }
+  .t-dot:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
+  @media (max-width: 900px) { .testimonials-grid { --per-view: 2; } }
+  @media (max-width: 768px) { .testimonials-grid { --per-view: 1; --gap: 1rem; align-items: flex-start; } .t-card { padding: 1.6rem; } }
   .t-stars { color: var(--red); font-size: 0.82rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
   .t-text { font-family: var(--font-serif); font-size: 0.93rem; font-style: italic; line-height: 1.78; color: var(--white); margin-bottom: 1.5rem; font-weight: 300; }
   .t-author strong { display: block; font-size: 0.88rem; font-weight: 700; }
-  .t-author span { font-size: 0.76rem; color: var(--text-light); }
 
+  /* Preguntas frecuentes */
+  .faq { padding: 6rem 0; }
+  .faq-list { max-width: 760px; margin: 0 auto; }
+  .faq-list details { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.2rem 0; }
+  .faq-list summary { cursor: pointer; font-weight: 700; font-size: 0.98rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+  .faq-list summary::-webkit-details-marker { display: none; }
+  .faq-list summary::after { content: '+'; color: var(--red); font-size: 1.3rem; line-height: 1; }
+  .faq-list details[open] summary::after { content: '–'; }
+  .faq-list details p { margin-top: 0.8rem; font-size: 0.9rem; line-height: 1.7; color: var(--text-light); font-weight: 300; }
+
+  /* Empresas */
+  .business { padding: 5rem 0; }
+  .business-card { max-width: 860px; margin: 0 auto; text-align: center; }
+  .business-card .lead { margin-bottom: 2rem; }
+
+  /* Cierre */
   .final { padding: 7rem var(--pad); background: var(--navy); text-align: center; position: relative; overflow: hidden; }
   .final::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 55% at 50% 50%, rgba(245,92,85,0.08) 0%, transparent 70%); }
-  .final-inner { max-width: 600px; margin: 0 auto; position: relative; }
+  .final-inner { max-width: 620px; margin: 0 auto; position: relative; }
   .final h2 { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.15; margin-bottom: 1.2rem; }
   .final h2 em { font-style: italic; color: var(--red); }
   .final p { font-size: 1rem; color: var(--text-light); line-height: 1.78; margin-bottom: 2.5rem; font-weight: 300; }
   .final-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 
-  footer { background: var(--navy); padding: 1.5rem var(--pad); text-align: center; font-size: 0.76rem; color: var(--text-light); border-top: 1px solid rgba(255,255,255,0.06); }
+  footer { background: var(--navy); padding: 1.8rem var(--pad); text-align: center; font-size: 0.76rem; color: var(--text-light); border-top: 1px solid rgba(255,255,255,0.06); line-height: 1.9; }
+  footer a { color: var(--text-light); }
+
+
+  /* Barra fija del test */
+  body { padding-bottom: 60px; }
+  .testbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; background: var(--red); color: var(--white); box-shadow: 0 -6px 24px rgba(0,0,0,0.25); }
+  .testbar-panel { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; background: var(--navy); border-top: 3px solid var(--red); }
+  .testbar.open .testbar-panel { max-height: 70vh; overflow-y: auto; }
+  .testbar-panel-inner { max-width: var(--max); margin: 0 auto; padding: 1.8rem var(--pad) 1.4rem; }
+  .testbar-panel h3 { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 900; margin-bottom: 0.4rem; }
+  .testbar-panel .for-who-list { margin-top: 0.6rem; }
+  .testbar-row { height: 60px; max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); display: flex; align-items: center; gap: 1rem; }
+  .testbar-toggle { flex: 1; min-width: 0; display: flex; align-items: center; gap: 0.6rem; background: none; border: none; color: var(--white); font-family: var(--font-sans); font-size: 0.9rem; text-align: left; cursor: pointer; height: 100%; }
+  .testbar-toggle .chev { display: inline-block; transition: transform 0.3s; font-size: 0.8rem; }
+  .testbar.open .testbar-toggle .chev { transform: rotate(180deg); }
+  .testbar-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .testbar-text strong { font-weight: 700; }
+  .testbar-cta { flex-shrink: 0; background: var(--white); color: var(--red); font-weight: 700; font-size: 0.82rem; padding: 0.6rem 1.1rem; border-radius: 4px; text-decoration: none; white-space: nowrap; }
+  .testbar-cta:hover { background: #f3f3f3; }
+  .testbar-short { display: none; }
+  @media (max-width: 700px) { .testbar-long { display: none; } .testbar-short { display: inline; } .testbar-row { padding: 0 1rem; gap: 0.6rem; } .testbar-cta { padding: 0.55rem 0.8rem; font-size: 0.78rem; } }
 
   .fade { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
   .fade.in { opacity: 1; transform: none; }
 
   @media (max-width: 768px) {
     .hero { padding: 7rem 1.5rem 4rem; min-height: auto; }
-    .why, .course, .testimonials { padding: 4rem 0; }
+    .why, .course, .testimonials, .about, .faq { padding: 4rem 0; }
     .final { padding: 4.5rem 1.5rem; }
     .final-btns { flex-direction: column; align-items: center; }
   }
@@ -105,7 +202,19 @@
 
 <nav>
   <a href="#" class="nav-logo">Irremplazables</a>
-  <a href="https://wa.me/34610022669?text=Hola,%20quiero%20reservar%20mi%20plaza%20en%20el%20curso%20Irremplazables" target="_blank" class="nav-cta">Reservar plaza</a>
+  <div class="nav-right">
+    <div class="nav-links" id="nav-links">
+      <a href="#edicion" class="nav-link">Próxima edición</a>
+      <a href="#por-que" class="nav-link">Por qué</a>
+      <a href="#curso" class="nav-link">Programa</a>
+      <a href="#javier" class="nav-link">Quién soy</a>
+      <a href="#testimonios" class="nav-link">Testimonios</a>
+      <a href="#preguntas" class="nav-link">Preguntas</a>
+      <a href="#empresas" class="nav-link">Empresas</a>
+    </div>
+    <a href="https://wa.me/34610022669?text=Hola,%20quiero%20reservar%20mi%20plaza%20en%20el%20curso%20Irremplazables" target="_blank" rel="noopener" class="nav-cta">Reservar plaza</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">☰</button>
+  </div>
 </nav>
 
 <section class="hero">
@@ -115,27 +224,54 @@
       Las habilidades que
       <em>nadie te enseñó</em>
     </h1>
-    <p class="hero-deck fade">Las destrezas que marcan la diferencia nunca estuvieron en ningún plan de estudios. Comunicación, liderazgo, delegación, autoridad. Lo que convierte a un buen profesional en alguien <strong>irremplazable</strong>.</p>
+    <p class="hero-claim fade">Lo que la IA no puede hacer por ti.</p>
+    <p class="hero-deck fade">Liderazgo, comunicación y delegación para quienes dirigen personas, en el trabajo, en casa y allí donde sirven. 7 sesiones online en directo, un grupo de máximo 10 personas y corrección personal de cada tarea.</p>
     <div class="hero-btns fade">
-      <a href="https://wa.me/34610022669?text=Hola,%20quiero%20reservar%20mi%20plaza%20en%20el%20curso%20Irremplazables" target="_blank" class="btn-primary">Reserva tu plaza →</a>
-      <a href="#curso" class="btn-ghost">Ver el programa</a>
+      <a href="https://tally.so/r/BEpkyA" target="_blank" rel="noopener" class="btn-primary">Haz el test gratuito (3 min) →</a>
+      <a href="#edicion" class="btn-ghost">Próxima edición: 11 de enero</a>
     </div>
+    <p class="hero-note fade">Descubre en qué punto estás como líder y en qué área puedes mejorar más.</p>
     <div class="hero-pills fade">
-      <span class="pill">Claridad y objetivos</span>
-      <span class="pill">Comunicación efectiva</span>
-      <span class="pill">Delegación</span>
-      <span class="pill">Autoridad</span>
-      <span class="pill">Liderazgo</span>
+      <span class="pill">Propósito y balance</span>
+      <span class="pill">Objetivos y acciones</span>
+      <span class="pill">Comunicación asertiva</span>
+      <span class="pill">Delegar</span>
+      <span class="pill">Autoridad y poder</span>
+      <span class="pill">Liderazgo e influencia</span>
     </div>
   </div>
 </section>
 
-<section class="why">
+<section class="edition bg-slate" id="edicion">
   <div class="section-wrap">
-    <div style="max-width:640px; margin:0 auto 3.5rem; text-align:center;" class="fade">
+    <div class="edition-card fade">
+      <div>
+        <span class="edition-label">Próxima edición</span>
+        <h2 class="h2" style="margin-bottom:0.2rem;">11 de enero de 2027</h2>
+        <p class="edition-sub">Reserva tu plaza. Si la primera sesión no te convence, te devolvemos el dinero*.</p>
+        <a href="https://wa.me/34610022669?text=Hola,%20quiero%20reservar%20mi%20plaza%20en%20la%20edici%C3%B3n%20del%2011%20de%20enero" target="_blank" rel="noopener" class="btn-primary">Reserva tu plaza →</a>
+      </div>
+      <div>
+        <div class="edition-facts">
+          <div class="fact"><small>Fechas</small><span>Del 11 de enero al 22 de febrero</span></div>
+          <div class="fact"><small>Horario</small><span>Lunes a las 20:00 (hora de Madrid)</span></div>
+          <div class="fact"><small>Formato</small><span>7 sesiones online en directo, de 60 a 90 minutos</span></div>
+          <div class="fact"><small>Grupo</small><span>Máximo 10 personas</span></div>
+          <div class="fact"><small>Precio</small><span>300 €</span></div>
+        </div>
+        <a href="https://wa.me/34610022669?text=Hola%20Javier,%20me%20gustar%C3%ADa%20hablar%2015%20minutos%20sobre%20el%20curso%20Irremplazables" target="_blank" rel="noopener" class="edition-link">¿Tienes alguna duda? <strong>Hablemos 15 minutos</strong></a>
+      </div>
+      <p class="edition-foot">* Para reservar la plaza es necesario un adelanto de 50 €.</p>
+    </div>
+  </div>
+</section>
+
+<section class="why bg-navy" id="por-que">
+  <div class="section-wrap">
+    <div class="center-head fade">
       <span class="label">Por qué existe este curso</span>
       <h2 class="h2">Nadie nos preparó<br>para esto</h2>
-      <p class="why-intro-text">Desde hace años veo a muchas personas que sufren. Lo digo sin tapujos: sufren. Porque tienen dificultades en cuestiones cotidianas para las que nadie les preparó. Ni el colegio, ni el instituto, ni la universidad.</p>
+      <p class="lead">Desde hace años veo a muchas personas que sufren. Lo digo sin tapujos: sufren. Porque tienen dificultades en cuestiones cotidianas para las que nadie les preparó. Ni el colegio, ni el instituto, ni la universidad.</p>
     </div>
     <div class="why-blocks" style="max-width:var(--max); margin:0 auto;">
       <div class="why-block fade">
@@ -159,63 +295,128 @@
   </div>
 </section>
 
-<section class="course" id="curso">
+<section class="course bg-slate" id="curso">
   <div class="section-wrap">
-    <div class="two-col">
+    <div class="course-grid">
       <div>
         <span class="label fade">El programa</span>
-        <h2 class="h2 fade">Lo que vamos<br>a trabajar</h2>
+        <h2 class="h2 fade">Lo que vamos a trabajar</h2>
         <ul class="course-modules">
-          <li class="fade"><span class="module-num">01</span><div class="module-info"><strong>Claridad y objetivos</strong><span>Saber en qué situación estás, qué quieres de verdad y cómo definir el camino para conseguirlo.</span></div></li>
-          <li class="fade"><span class="module-num">02</span><div class="module-info"><strong>Comunicación efectiva</strong><span>Escuchar, conectar y conducir conversaciones hacia acuerdos. Porque para que te escuchen, primero tienes que escuchar.</span></div></li>
-          <li class="fade"><span class="module-num">03</span><div class="module-info"><strong>Delegación sin miedo</strong><span>Soltar el control de forma inteligente y construir un entorno donde las personas crezcan.</span></div></li>
-          <li class="fade"><span class="module-num">04</span><div class="module-info"><strong>Autoridad y credibilidad</strong><span>Construir influencia real basada en decisiones coherentes y en generar confianza.</span></div></li>
-          <li class="fade"><span class="module-num">05</span><div class="module-info"><strong>Liderazgo de personas</strong><span>Orientar hacia un objetivo común preocupándote de verdad por quienes forman parte del proyecto.</span></div></li>
+          <li class="fade"><span class="module-num">00</span><div class="module-info"><strong>Presentación</strong><span>Eliges tu caso, el ámbito en el que quieres mejorar, y haces la autoevaluación inicial.</span></div></li>
+          <li class="fade"><span class="module-num">01</span><div class="module-info"><strong>Propósito y balance</strong><span>Saber en qué situación estás, qué quieres de verdad y cómo repartir tu tiempo y tu energía.</span></div></li>
+          <li class="fade"><span class="module-num">02</span><div class="module-info"><strong>Objetivos y acciones</strong><span>Convertir lo que quieres en objetivos claros y en acciones concretas para cada semana.</span></div></li>
+          <li class="fade"><span class="module-num">03</span><div class="module-info"><strong>Comunicación asertiva</strong><span>Escuchar, conectar y conducir conversaciones hacia acuerdos. Porque para que te escuchen, primero tienes que escuchar.</span></div></li>
+          <li class="fade"><span class="module-num">04</span><div class="module-info"><strong>Delegar</strong><span>Soltar el control de forma inteligente y construir un entorno donde las personas crezcan.</span></div></li>
+          <li class="fade"><span class="module-num">05</span><div class="module-info"><strong>Autoridad y poder</strong><span>Construir influencia real basada en decisiones coherentes y en generar confianza.</span></div></li>
+          <li class="fade"><span class="module-num">06</span><div class="module-info"><strong>Liderazgo e influencia</strong><span>Orientar hacia un objetivo común preocupándote de verdad por quienes forman parte del proyecto.</span></div></li>
         </ul>
       </div>
+    </div>
+    <div class="how">
+      <div class="how-item fade"><strong>Tu propio caso</strong><p>Desde el primer día eliges un ámbito real (tu equipo, tu familia, un proyecto) y cada sesión lo hace avanzar.</p></div>
+      <div class="how-item fade"><strong>Corrección personal</strong><p>Cada semana hay una tarea práctica. La corrijo personalmente y te devuelvo comentarios concretos.</p></div>
+      <div class="how-item fade"><strong>Progreso medido</strong><p>Haces una autoevaluación al empezar y otra al terminar, para ver con datos cuánto has avanzado.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about bg-navy" id="javier">
+  <div class="section-wrap">
+    <div class="about-grid">
+      <div class="about-photo fade"><img src="javier.jpg" alt="Javier de la Cruz" width="220" height="220" loading="lazy"></div>
       <div class="fade">
-        <div class="course-right-card">
-          <span class="label">¿Para quién es?</span>
-          <h3 style="font-family:var(--font-serif);font-size:1.25rem;font-weight:900;margin-bottom:0.25rem;">Este curso es para ti si…</h3>
-          <ul class="for-who-list">
-            <li>Quieres mejorar tu impacto en el entorno laboral y personal</li>
-            <li>Gestionas personas y necesitas herramientas reales</li>
-            <li>Sientes que te faltan recursos para situaciones del día a día</li>
-            <li>Llevas años siendo bueno en lo tuyo, pero algo no encaja del todo</li>
-            <li>Quieres ser indispensable para quienes te rodean</li>
-          </ul>
-          <div class="cta-block">
-            <p>Las plazas son limitadas para garantizar atención cercana y aprendizaje real.</p>
-            <a href="https://wa.me/34610022669?text=Hola,%20quiero%20saber%20más%20sobre%20el%20curso%20Irremplazables" target="_blank" class="btn-primary btn-full">Contacta para saber más →</a>
-          </div>
-        </div>
+        <span class="label">Quién imparte el curso</span>
+        <h2 class="h2">Javier de la Cruz</h2>
+        <p>Abogado y formador. Llevo muchos años dirigiendo equipos: en la empresa, en mi familia y en voluntariados. He visto de cerca lo que cuesta dirigir personas sin que nadie te haya enseñado a hacerlo.</p>
+        <p>Irremplazables reúne lo que a mí me habría gustado aprender antes: un método práctico, aplicado a tu vida real y con acompañamiento personal en cada paso.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="testimonials">
+<section class="testimonials bg-slate" id="testimonios">
   <div class="section-wrap">
     <div class="testimonials-header fade">
       <span class="label">Testimonios</span>
       <h2 class="h2">Lo que dicen quienes<br>ya lo vivieron</h2>
     </div>
-    <div class="testimonials-grid">
-      <div class="t-card fade">
+    <!-- Testimonios: los 3 primeros son los principales. Para añadir más, copia un bloque <div class="t-card"> al final de la lista: el carrusel y los puntos se ajustan solos. -->
+    <div class="testimonials-grid fade" id="t-track" aria-label="Testimonios" tabindex="0">
+      <div class="t-card">
         <div class="t-stars">★★★★★</div>
         <p class="t-text">"El curso me ha parecido extraordinario. Pese a dar clase de comunicación a peritos, me ha dado otra visión diferente, que voy a aprovechar para mis clases."</p>
         <div class="t-author"><strong>María Jesús Rodríguez</strong></div>
       </div>
-      <div class="t-card fade">
+      <div class="t-card">
         <div class="t-stars">★★★★★</div>
         <p class="t-text">"El curso me ayudó a enfrentar de una mejor forma las conversaciones, laborales y personales más difíciles, sin sobrepensar el resultado, ganando seguridad en mi mismo y mejorando la forma en que transmito mi mensaje. Creo que el curso puede ayudar a mucha gente en el ámbito laboral. Tanto aquella que está empezando una carrera, como aquella que debe empezar a compaginar una mayor responsabilidad laboral con una responsabilidad familiar."</p>
         <div class="t-author"><strong>Jaime Pardo</strong></div>
       </div>
-      <div class="t-card fade">
+      <div class="t-card">
         <div class="t-stars">★★★★★</div>
         <p class="t-text">"El curso da herramientas muy útiles para fijarse objetivos y alcanzarlos. Javier lo imparte de forma muy clara, amena haciendo un seguimiento personalizado de cada asistente que es determinante."</p>
         <div class="t-author"><strong>Carlos Gutiérrez</strong></div>
       </div>
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Cuando te enseñan soft skills desde la experiencia real, la diferencia es abismal. En Irremplazables, Javi empaqueta conceptos muy complejos en un formato súper accesible y práctico. Te da las claves exactas para resolver esas trabas del día a día y profesionales a las que nunca supiste ponerles nombre."</p>
+        <div class="t-author"><strong>Darío Zaera</strong></div>
+      </div>
+    </div>
+    <div class="t-dots" id="t-dots" role="tablist" aria-label="Navegación de testimonios"></div>
+  </div>
+</section>
+
+<section class="faq bg-navy" id="preguntas">
+  <div class="section-wrap">
+    <div class="center-head fade">
+      <span class="label">Preguntas frecuentes</span>
+      <h2 class="h2">Lo que suelen preguntarnos</h2>
+    </div>
+    <div class="faq-list fade">
+      <details>
+        <summary>¿Necesito tener un equipo a mi cargo?</summary>
+        <p>No. Sirve igual si diriges un equipo en el trabajo, si vas a empezar a hacerlo pronto o si quieres aplicarlo en tu familia o en un voluntariado. En la primera sesión eliges el ámbito en el que quieres trabajar.</p>
+      </details>
+      <details>
+        <summary>¿Cómo son las sesiones?</summary>
+        <p>Son 7 sesiones online en directo, los lunes a las 20:00 (hora de Madrid), de 60 a 90 minutos. Al terminar cada sesión tienes una tarea práctica que corrijo personalmente.</p>
+      </details>
+      <details>
+        <summary>¿Se graban las sesiones?</summary>
+        <p>Sí. Las sesiones se graban y tienes la grabación disponible durante una semana, por si algún lunes no puedes conectarte.</p>
+      </details>
+      <details>
+        <summary>¿Por qué grupos tan pequeños?</summary>
+        <p>Con un máximo de 10 personas puedo corregir cada tarea y conocer el caso de cada participante. Además, el grupo comparte experiencias y aprende de las situaciones de los demás.</p>
+      </details>
+      <details>
+        <summary>¿Y si no me convence?</summary>
+        <p>Si después de la primera sesión ves que no es para ti, te devolvemos el dinero.</p>
+      </details>
+      <details>
+        <summary>¿Cómo reservo mi plaza?</summary>
+        <p>Escríbenos por WhatsApp. La plaza queda reservada con 50 € y el resto se abona antes de la primera sesión.</p>
+      </details>
+      <details>
+        <summary>¿Emitís factura?</summary>
+        <p>Sí. Si necesitas factura, pídenosla al reservar y te la enviamos.</p>
+      </details>
+      <details>
+        <summary>¿Lo podéis hacer para mi empresa o mi colegio?</summary>
+        <p>Sí. Para empresas y colegios lo impartimos de forma presencial, completo o en talleres de una sesión concreta. Escríbenos y lo adaptamos a vuestro equipo.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="business bg-slate" id="empresas">
+  <div class="section-wrap">
+    <div class="business-card fade">
+      <span class="label">Para empresas y colegios</span>
+      <h2 class="h2">Personas que dirigen mejor,<br>equipos que crecen</h2>
+      <p class="lead">Llevamos Irremplazables a tu organización en formato presencial: el programa completo o talleres de 3 horas sobre una sesión concreta, como delegar o comunicación asertiva. Para equipos directivos, mandos intermedios y claustros.</p>
+      <a href="https://wa.me/34610022669?text=Hola%20Javier,%20me%20interesa%20Irremplazables%20para%20mi%20empresa%20o%20colegio" target="_blank" rel="noopener" class="btn-primary">Hablemos →</a>
     </div>
   </div>
 </section>
@@ -223,21 +424,141 @@
 <section class="final">
   <div class="final-inner">
     <h2 class="fade">Conviértete en <em>irremplazable</em></h2>
-    <p class="fade">Las plazas son limitadas. Si quieres trabajar estas destrezas y llevarlas a tu vida profesional y personal, escríbenos y te contamos todo.</p>
+    <p class="fade">Próxima edición: lunes 11 de enero a las 20:00. Plazas limitadas a 10 personas. Si quieres trabajar estas destrezas y llevarlas a tu vida profesional y personal, escríbenos y te contamos todo.</p>
     <div class="final-btns fade">
-      <a href="https://wa.me/34610022669?text=Hola,%20quiero%20reservar%20mi%20plaza%20en%20el%20curso%20Irremplazables" target="_blank" class="btn-primary">Reserva tu plaza →</a>
-      <a href="https://wa.me/34610022669?text=Hola,%20quiero%20saber%20más%20sobre%20el%20curso%20Irremplazables" target="_blank" class="btn-ghost">Contacta para saber más</a>
+      <a href="https://wa.me/34610022669?text=Hola,%20quiero%20reservar%20mi%20plaza%20en%20el%20curso%20Irremplazables" target="_blank" rel="noopener" class="btn-primary">Reserva tu plaza →</a>
+      <a href="https://tally.so/r/BEpkyA" target="_blank" rel="noopener" class="btn-ghost">Haz el test gratuito</a>
     </div>
   </div>
 </section>
 
+<div class="testbar" id="testbar">
+  <div class="testbar-panel" id="testbar-panel" aria-hidden="true">
+    <div class="testbar-panel-inner">
+      <h3>Este curso es para ti si…</h3>
+      <ul class="for-who-list">
+        <li>Diriges personas, o vas a empezar a hacerlo, y necesitas herramientas reales</li>
+        <li>Quieres mejorar tu impacto en el entorno laboral y personal</li>
+        <li>Sientes que te faltan recursos para situaciones del día a día</li>
+        <li>Llevas años siendo bueno en lo tuyo, pero algo no encaja del todo</li>
+        <li>Quieres ser indispensable para quienes te rodean</li>
+      </ul>
+      <p class="lead" style="margin-top:0.8rem;font-size:0.9rem;">¿No sabes si es para ti? Haz el test gratuito (3 minutos) y descubre en qué punto estás como líder.</p>
+    </div>
+  </div>
+  <div class="testbar-row">
+    <button class="testbar-toggle" id="testbar-toggle" aria-expanded="false" aria-controls="testbar-panel">
+      <span class="chev">▲</span>
+      <span class="testbar-text"><span class="testbar-long"><strong>Este curso es para ti si…</strong> Haz el test gratuito y descubre en qué punto estás</span><span class="testbar-short"><strong>¿Este curso es para ti?</strong></span></span>
+    </button>
+    <a href="https://tally.so/r/BEpkyA" target="_blank" rel="noopener" class="testbar-cta"><span class="testbar-long">Hacer test gratuito</span><span class="testbar-short">Hacer el test</span></a>
+  </div>
+</div>
+
 <footer>
-  <p>© 2025 Irremplazables · Curso de Soft Skills</p>
+  <p>© 2026 Irremplazables · Curso de Soft Skills</p>
+  <p><a href="privacidad.html">Aviso legal y política de privacidad</a> · <a href="https://www.instagram.com/somos.irremplazables/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.linkedin.com/in/javierdelacruzrodriguez/" target="_blank" rel="noopener">LinkedIn</a></p>
 </footer>
 
 <script>
+
+  (function () {
+    const t = document.getElementById('nav-toggle'), links = document.getElementById('nav-links');
+    t.addEventListener('click', () => { const o = links.classList.toggle('open'); t.setAttribute('aria-expanded', o); t.textContent = o ? '✕' : '☰'; });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); t.setAttribute('aria-expanded', 'false'); t.textContent = '☰'; }));
+    const navLinks = Array.from(links.querySelectorAll('a'));
+    const secObs = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('current', a.getAttribute('href') === '#' + e.target.id));
+    }), { rootMargin: '-45% 0px -50% 0px' });
+    navLinks.forEach(a => { const sec = document.querySelector(a.getAttribute('href')); if (sec) secObs.observe(sec); });
+
+    const bar = document.getElementById('testbar'), btn = document.getElementById('testbar-toggle'), panel = document.getElementById('testbar-panel');
+    btn.addEventListener('click', () => { const o = bar.classList.toggle('open'); btn.setAttribute('aria-expanded', o); panel.setAttribute('aria-hidden', !o); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && bar.classList.contains('open')) btn.click(); });
+  })();
+
   const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), { threshold: 0.1 });
   document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+
+  (function () {
+    const track = document.getElementById('t-track');
+    const dotsBox = document.getElementById('t-dots');
+    if (!track || !dotsBox) return;
+    const cards = () => Array.from(track.querySelectorAll('.t-card'));
+    const perView = () => parseInt(getComputedStyle(track).getPropertyValue('--per-view'), 10) || 1;
+    const pages = () => Math.max(1, Math.ceil(cards().length / perView()));
+    let current = 0;
+
+    function goTo(i) {
+      const list = cards();
+      const target = list[Math.min(i * perView(), list.length - 1)];
+      if (target) track.scrollTo({ left: target.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+    }
+    function setActive(i) {
+      current = i;
+      dotsBox.querySelectorAll('.t-dot').forEach((d, k) => {
+        d.classList.toggle('active', k === i);
+        d.setAttribute('aria-selected', k === i ? 'true' : 'false');
+      });
+    }
+    function build() {
+      const n = pages();
+      dotsBox.innerHTML = '';
+      dotsBox.hidden = n <= 1;
+      for (let i = 0; i < n; i++) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 't-dot';
+        b.setAttribute('role', 'tab');
+        b.setAttribute('aria-label', 'Ver testimonios ' + (i + 1) + ' de ' + n);
+        b.addEventListener('click', () => goTo(i));
+        dotsBox.appendChild(b);
+      }
+      setActive(Math.min(current, n - 1));
+    }
+    function onScroll() {
+      const list = cards();
+      if (!list.length) return;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      let i;
+      if (maxScroll > 0 && track.scrollLeft >= maxScroll - 4) {
+        i = pages() - 1;
+      } else {
+        const step = list.length > 1 ? list[1].offsetLeft - list[0].offsetLeft : track.clientWidth;
+        i = Math.round(track.scrollLeft / (step * perView()));
+      }
+      setActive(Math.max(0, Math.min(i, pages() - 1)));
+    }
+    let raf;
+    track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(onScroll); }, { passive: true });
+    track.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); goTo(Math.min(current + 1, pages() - 1)); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(Math.max(current - 1, 0)); }
+    });
+    let lastPer = perView();
+    window.addEventListener('resize', () => { if (perView() !== lastPer) { lastPer = perView(); build(); onScroll(); } });
+    build();
+
+    // Avance automático cada 6 segundos; se detiene mientras el visitante interactúa.
+    const DELAY = 6000;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let timer = null, paused = false, resumeTimer = null;
+    function next() {
+      if (paused || document.hidden || pages() <= 1) return;
+      goTo(current + 1 >= pages() ? 0 : current + 1);
+    }
+    function start() { if (!reduceMotion) { clearInterval(timer); timer = setInterval(next, DELAY); } }
+    function pause() { paused = true; clearTimeout(resumeTimer); }
+    function resume(after) { clearTimeout(resumeTimer); resumeTimer = setTimeout(() => { paused = false; start(); }, after || 0); }
+    track.addEventListener('mouseenter', pause);
+    track.addEventListener('mouseleave', () => resume());
+    track.addEventListener('touchstart', pause, { passive: true });
+    track.addEventListener('touchend', () => resume(8000), { passive: true });
+    track.addEventListener('focusin', pause);
+    track.addEventListener('focusout', () => resume());
+    dotsBox.addEventListener('click', () => { pause(); resume(8000); });
+    start();
+  })();
 </script>
 </body>
 </html>
